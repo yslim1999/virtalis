@@ -32,5 +32,13 @@ class Node{
         bool getBoolValue(void);
 
         float getfloatValue(void);
+
+        vector<Node*> getChildren(void);
+
+        void addChild(Node* node);
+
+        void printAllDirectChildren(void);
+
+        void printTree(Node* root);
 };
 #endif

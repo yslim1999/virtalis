@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <queue>
 #include "node.h"
 using namespace std;
 
@@ -46,4 +47,59 @@ bool Node::getBoolValue(void){
 
 float Node::getfloatValue(void){
     return val_float;
+}
+
+vector<Node*> Node::getChildren(void){
+    return children;
+}
+
+void Node::addChild(Node* node){
+    children.push_back(node);
+}
+
+//Print all names of direct children of node.
+void Node::printAllDirectChildren(void){
+     for (auto it = children.begin(); it != children.end(); ++it){
+        Node* currentNode = *it;
+        cout << currentNode->getName() << endl;
+     }
+}
+
+// Print the names of the nodes and names of all it's children nodes
+// using level order traversal.
+void Node::printTree(Node* root)
+{
+    // Base Case
+    // Check if a node is empty.
+    if (root == NULL)
+        return;
+    
+    queue<Node *> q;
+    //enqueue
+    q.push(root);
+    //cout << root->getName() << endl;
+
+    while(!q.empty()){
+        int nodeCount = q.size();
+
+        //if current node has children
+        while(nodeCount > 0){
+            //Remove and print first node.
+            Node* current = q.front();
+            cout << current->getName() << " ";
+            q.pop();
+
+            //Enqueue all children of current node.
+            for(auto &child : current->children){
+                q.push(child);
+            }
+
+            nodeCount--;
+            // for(int i = 0; i < current->children.size();i++){
+            //     q.push(current)
+            // }
+        }
+
+        cout << endl;
+    }
 }
