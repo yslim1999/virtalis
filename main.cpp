@@ -24,6 +24,7 @@ int main(){
     //Printing the entire tree.
     cout << "Printing whole tree:" << endl;
     node_A.printTree(&node_A);
+    cout << "Testing search function on A, F and L nodes:" << endl;
     Node* search_up_1 = node_A.depth_first_search(&node_A, (string)"A");
     Node* search_up_2 = node_A.depth_first_search(&node_A, (string)"F");
     Node* search_up_3 = node_A.depth_first_search(&node_A, (string)"L");
