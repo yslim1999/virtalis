@@ -3,6 +3,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stack>
+#include <queue>
+#include <algorithm>
 using namespace std;
 
 class Node{
@@ -25,9 +28,11 @@ class Node{
 
         Node(std::string name, float val_float);
 
-        std::string getName(void);
+        string getName(void);
 
         int getIntValue(void);
+        
+        std::string getStringValue(void);
 
         bool getBoolValue(void);
 
@@ -40,5 +45,9 @@ class Node{
         void printAllDirectChildren(void);
 
         void printTree(Node* root);
+
+        Node* depth_first_search(Node* root, std::string name);
+
+        void getPayload(void);
 };
 #endif
